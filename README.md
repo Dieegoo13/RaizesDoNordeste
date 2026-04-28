@@ -1,21 +1,92 @@
-# Raízes do Nordeste — Back-End API
+<h1 align="center" style="font-weight: bold;">Raízes do Nordeste API 🌵🍽️</h1>
 
-API REST desenvolvida com **Laravel 10 + MySQL + JWT** para a rede de lanchonetes Raízes do Nordeste.
+<div align="center">
 
-Suporta múltiplos canais (APP, TOTEM, BALCAO, PICKUP, WEB), controle de estoque por unidade, pagamento via mock e programa de fidelidade com conformidade LGPD.
+![Badge](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
+![Badge](https://img.shields.io/badge/Laravel-10-red?logo=laravel&logoColor=white)
+![Badge](https://img.shields.io/badge/PHP-8.1+-777BB4?logo=php&logoColor=white)
+![Badge](https://img.shields.io/badge/License-MIT-blue)
+
+</div>
+
+<p align="center">
+ <a href="#sobre">Sobre</a> • 
+ <a href="#funcionalidades">Funcionalidades</a> • 
+ <a href="#tecnologias">Tecnologias</a> • 
+ <a href="#como-rodar">Como Rodar</a> • 
+ <a href="#endpoints">Endpoints</a> •
+ <a href="#estrutura">Estrutura</a> •
+ <a href="#autor">Autor</a>
+</p>
+
+<p align="center">
+    <b>API REST desenvolvida com Laravel para a rede de lanchonetes Raízes do Nordeste. O sistema gerencia pedidos, usuários, estoque e fidelidade, oferecendo suporte a múltiplos canais como APP, TOTEM, BALCÃO e WEB.</b>
+</p>
 
 ---
 
-## Tecnologias
+<h2 id="sobre">📋 Sobre o Projeto</h2>
 
-| Tecnologia | Versão  |
-|------------|---------|
-| PHP        | 8.1+    |
-| Laravel    | 10.x    |
-| MySQL      | 8.0+    |
-| JWT Auth   | 2.x     |
+A **Raízes do Nordeste API** é uma aplicação back-end desenvolvida para simular o funcionamento completo de uma rede de restaurantes.
+
+O sistema foi projetado com foco em escalabilidade e boas práticas, permitindo o gerenciamento de:
+
+- Pedidos em múltiplos canais (APP, WEB, TOTEM, BALCÃO)
+- Controle de estoque por unidade
+- Sistema de autenticação com **JWT**
+- Programa de fidelidade
+- Fluxo completo de pedidos
+
+Este projeto foi desenvolvido com o objetivo de praticar:
+
+- Arquitetura RESTful  
+- Autenticação com **JWT**  
+- Estrutura do **Laravel 10**  
+- Integração com banco de dados  
+- Boas práticas de back-end  
+- Separação de responsabilidades  
 
 ---
+
+<h2 id="funcionalidades">🚀 Funcionalidades Principais</h2>
+
+- 🔐 **Autenticação com JWT**
+- 👥 **Cadastro e login de usuários**
+- 🍔 **Listagem de produtos por unidade**
+- 🧾 **Criação e gerenciamento de pedidos**
+- 📦 **Controle de estoque**
+- 💳 **Simulação de pagamento (mock)**
+- 🎯 **Sistema de fidelidade com pontos**
+- 🏪 **Suporte a múltiplas unidades**
+- 📊 **Painel administrativo (admin/gerente)**
+
+---
+
+<h2 id="tecnologias">💻 Tecnologias Utilizadas</h2>
+
+<div>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg" width="30px" />
+  <span>Laravel 10</span>
+</div>
+
+<div>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" width="30px" />
+  <span>PHP 8.1+</span>
+</div>
+
+<div>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" width="30px" />
+  <span>MySQL 8+</span>
+</div>
+
+<div>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/composer/composer-original.svg" width="30px" />
+  <span>Composer</span>
+</div>
+
+---
+
+<h2 id="como-rodar">🚀 Como Rodar o Projeto</h2>
 
 ## Instalação
 
@@ -124,26 +195,3 @@ Acesse após iniciar o servidor:
 ## Estrutura do Banco
 
 8 tabelas: `users`, `unidades`, `produtos`, `estoque`, `pedidos`, `pedido_itens`, `pagamentos`, `fidelidade_pontos`
-
-git init
-git add .
-git commit -m "feat: setup inicial do projeto Laravel 10"
-
-git add database/migrations/
-git commit -m "feat: 8 migrations com FKs e constraints"
-
-git add app/Models/
-git commit -m "feat: 8 models Eloquent com relacionamentos"
-
-git add app/Services/
-git commit -m "feat: services PedidoService, PagamentoMock, Fidelidade e Estoque"
-
-git add app/Http/
-git commit -m "feat: controllers REST com JWT e autorização por perfil"
-
-git add database/seeders/ public/api-docs.json resources/views/swagger.blade.php
-git commit -m "feat: seeder, Swagger UI e coleção Postman"
-
-git remote add origin https://github.com/seu-usuario/raizes-nordeste.git
-git branch -M main
-git push -u origin main
