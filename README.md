@@ -1,66 +1,149 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Raízes do Nordeste — Back-End API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+API REST desenvolvida com **Laravel 10 + MySQL + JWT** para a rede de lanchonetes Raízes do Nordeste.
 
-## About Laravel
+Suporta múltiplos canais (APP, TOTEM, BALCAO, PICKUP, WEB), controle de estoque por unidade, pagamento via mock e programa de fidelidade com conformidade LGPD.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tecnologias
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+| Tecnologia | Versão  |
+|------------|---------|
+| PHP        | 8.1+    |
+| Laravel    | 10.x    |
+| MySQL      | 8.0+    |
+| JWT Auth   | 2.x     |
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Instalação
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 1. Clonar o repositório
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+git clone https://github.com/seu-usuario/raizes-nordeste.git
+cd raizes-nordeste
+```
 
-## Laravel Sponsors
+### 2. Instalar dependências
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+composer install
+```
 
-### Premium Partners
+### 3. Configurar variáveis de ambiente
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+```bash
+cp .env.example .env
+```
 
-## Contributing
+Edite o `.env` com suas credenciais do MySQL.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 4. Gerar chaves
 
-## Code of Conduct
+```bash
+php artisan key:generate
+php artisan jwt:secret
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 5. Criar banco de dados
 
-## Security Vulnerabilities
+```sql
+CREATE DATABASE raizes_nordeste CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 6. Executar migrations e seed
 
-## License
+```bash
+php artisan migrate --seed
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Usuários criados pelo seed:
+
+| Perfil  | E-mail                | Senha    |
+|---------|-----------------------|----------|
+| ADMIN   | admin@raizes.com      | password |
+| GERENTE | gerente@raizes.com    | password |
+| COZINHA | cozinha@raizes.com    | password |
+| CLIENTE | cliente@raizes.com    | password |
+
+### 7. Iniciar a API
+
+```bash
+php artisan serve
+```
+
+API disponível em: `http://localhost:8000/api`
+
+---
+
+## Documentação Swagger
+
+Acesse após iniciar o servidor:
+
+---
+
+## Testes via Postman
+
+1. Importe o arquivo `raizes_postman_collection.json` no Postman
+2. Execute na ordem: **Auth → Produtos → Pedidos → Estoque → Fidelidade**
+3. Os tokens JWT são capturados automaticamente pelos scripts T01, T02 e T03
+
+### Fluxo crítico
+
+---
+
+## Endpoints
+
+| Método | Rota                           | Auth    | Descrição                     |
+|--------|--------------------------------|---------|-------------------------------|
+| POST   | /auth/login                    | Público | Login JWT                     |
+| POST   | /auth/logout                   | JWT     | Logout                        |
+| POST   | /usuarios                      | Público | Cadastro de cliente           |
+| GET    | /unidades                      | Público | Listar unidades               |
+| GET    | /unidades/{id}                 | Público | Detalhar unidade              |
+| GET    | /produtos?unidade_id=1         | Público | Cardápio por unidade          |
+| GET    | /produtos/{id}                 | Público | Detalhar produto              |
+| POST   | /pedidos                       | JWT     | Criar pedido (fluxo crítico)  |
+| GET    | /pedidos                       | JWT/ADM | Listar pedidos com filtros    |
+| GET    | /pedidos/{id}                  | JWT     | Detalhar pedido               |
+| PATCH  | /pedidos/{id}/status           | JWT/ADM | Atualizar status do pedido    |
+| GET    | /estoque?unidade_id=1          | ADM/GER | Consultar estoque             |
+| POST   | /estoque/movimentacao          | ADM/GER | Entrada/saída de estoque      |
+| GET    | /fidelidade/saldo/{id}         | JWT     | Saldo de pontos               |
+| GET    | /fidelidade/historico/{id}     | JWT     | Histórico de pontos           |
+| POST   | /fidelidade/resgatar           | JWT     | Resgatar pontos               |
+
+---
+
+## Arquitetura
+
+---
+
+## Estrutura do Banco
+
+8 tabelas: `users`, `unidades`, `produtos`, `estoque`, `pedidos`, `pedido_itens`, `pagamentos`, `fidelidade_pontos`
+
+git init
+git add .
+git commit -m "feat: setup inicial do projeto Laravel 10"
+
+git add database/migrations/
+git commit -m "feat: 8 migrations com FKs e constraints"
+
+git add app/Models/
+git commit -m "feat: 8 models Eloquent com relacionamentos"
+
+git add app/Services/
+git commit -m "feat: services PedidoService, PagamentoMock, Fidelidade e Estoque"
+
+git add app/Http/
+git commit -m "feat: controllers REST com JWT e autorização por perfil"
+
+git add database/seeders/ public/api-docs.json resources/views/swagger.blade.php
+git commit -m "feat: seeder, Swagger UI e coleção Postman"
+
+git remote add origin https://github.com/seu-usuario/raizes-nordeste.git
+git branch -M main
+git push -u origin main
