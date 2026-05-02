@@ -27,9 +27,13 @@
 </p>
 
 <p align="center">
-    🧪 <b>Collection para testes (Postman/Insomnia):</b> 
+    🧪 <b>Collection para testes (Postman/Insomnia):</b><br>
     <code>raizes_postman_collection.json</code>
-    <br>
+    <br><br>
+    🔗 <a href="https://github.com/Dieegoo13/RaizesDoNordeste/blob/main/raizes_postman_collection.json" target="_blank">
+        Acessar colection dos testes no GitHub
+    </a>
+    <br><br>
     <span>Arquivo disponível na raiz do projeto para facilitar a importação e execução dos endpoints da API.</span>
 </p>
 
