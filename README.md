@@ -21,6 +21,16 @@
 
 <p align="center">
     <b>API REST desenvolvida com Laravel para a rede de lanchonetes Raízes do Nordeste. O sistema gerencia pedidos, usuários, estoque e fidelidade, oferecendo suporte a múltiplos canais como APP, TOTEM, BALCÃO e WEB.</b>
+    <br><br>
+    📄 <b>API disponível em:</b> 
+    <code>http://localhost:8000/api/documentation</code>
+</p>
+
+<p align="center">
+    🧪 <b>Collection para testes (Postman/Insomnia):</b> 
+    <code>raizes_postman_collection.json</code>
+    <br>
+    <span>Arquivo disponível na raiz do projeto para facilitar a importação e execução dos endpoints da API.</span>
 </p>
 
 ---
@@ -145,7 +155,7 @@ Usuários criados pelo seed:
 php artisan serve
 ```
 
-API disponível em: `http://localhost:8000/api`
+API disponível em: `http://localhost:8000/api/documentation`
 
 ---
 
